@@ -1,20 +1,21 @@
 package edu.hw1;
 
-public class Task2 {
-    public static void main(String[] args) {
-        int[] input = new int[]{4666, 544, 0, 1212121};
-        for (int value : input) {
-            System.out.println(countDigits(value));
-        }
+public final class Task2 {
+
+    private Task2() {
+
     }
 
+    private static final int DEGREE = 10;
+
     public static int countDigits(int value) {
-        int delimiter = 10;
-        int digit = 0, divisionResult = 1;
-        while (divisionResult > 0){
-            divisionResult = value / delimiter;
+        int degree = DEGREE;
+        int digit = 0;
+        int divisionResult = 1;
+        while (divisionResult > 0) {
+            divisionResult = value / degree;
             digit++;
-            delimiter *= 10;
+            degree *= DEGREE;
         }
         return digit;
     }

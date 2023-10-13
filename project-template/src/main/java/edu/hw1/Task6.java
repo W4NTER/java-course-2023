@@ -2,20 +2,21 @@ package edu.hw1;
 
 import java.util.Arrays;
 
-public class Task6 {
-    public static void main(String[] args) {
-        int counter = 0;
-        int[] values = new int[] {3524, 2321, 2221, 2000};
-        for (int value : values) {
-            System.out.println(countK(value, counter));
-        }
+public final class Task6 {
+
+    private Task6() {
+
     }
 
-    public static int countK(int num, int counter) {
+    private static final int FINAL_VALUE = 6174;
+
+    public static int countKRecursion(int num, int counter) {
+        int numerator = counter;
+        int number = num;
         StringBuilder value =  new StringBuilder(String.valueOf(num));
         int[] arrayNums = new int[] {0, 0, 0, 0};
 
-        for (int i = 0; i < value.length(); i++){
+        for (int i = 0; i < value.length(); i++) {
              arrayNums[i] = Integer.parseInt(value.substring(i, i + 1));
         }
         Arrays.sort(arrayNums);
@@ -31,12 +32,18 @@ public class Task6 {
 
         int number2 = Integer.parseInt(strValue.toString());
 
-        if (num == 6174) {
+        if (num == FINAL_VALUE) {
             return counter;
         } else {
-            num = Math.max(number1, number2) - Math.min(number1, number2);
-            counter++;
-            return countK(num, counter);
+            number = Math.max(number1, number2) - Math.min(number1, number2);
+            numerator++;
+            return countKRecursion(number, numerator);
         }
+    }
+
+    public static int countK(int number) {
+        int counter = 0;
+        counter = countKRecursion(number, counter);
+        return counter;
     }
 }

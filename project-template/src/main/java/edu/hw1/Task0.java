@@ -1,11 +1,18 @@
 package edu.hw1;
 
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class Task0 {
-    public static void main(String[] args) {
-        Logger logger = Logger.getLogger(Task0.class.getName());
+public final class Task0 {
+    private Task0() {
 
-        logger.info("Привет, мир!");
     }
+
+    private final static String TEXT = "Привет, мир!";
+    private final static Logger LOGGER = LogManager.getLogger();
+
+    public static void loggerToConsole() {
+        LOGGER.info(TEXT);
+    }
+
 }

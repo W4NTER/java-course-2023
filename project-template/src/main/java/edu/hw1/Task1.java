@@ -1,21 +1,20 @@
 package edu.hw1;
 
-public class Task1 {
-    public static void main(String[] args) {
-        String[] videoLength = {"01:00", "13:56", "10:60"};
-        for (String input : videoLength) {
-            System.out.println(minutesToSeconds(input));
-        }
+public final class Task1 {
+    private final static String SEPARATOR = ":";
+    private final static int SECONDS_PER_MINUTE = 60;
+
+    private Task1() {
     }
 
     public static int minutesToSeconds(String videoLength) {
-        String[] strSplit = videoLength.split(":");
+        String[] strSplit = videoLength.split(SEPARATOR);
         int minutes = Integer.parseInt(strSplit[0]);
         int seconds = Integer.parseInt(strSplit[1]);
-        if (seconds >= 60) {
+        if (seconds >= SECONDS_PER_MINUTE) {
             return -1;
         } else {
-            seconds = minutes * 60 + seconds;
+            seconds = minutes * SECONDS_PER_MINUTE + seconds;
             return seconds;
         }
 
