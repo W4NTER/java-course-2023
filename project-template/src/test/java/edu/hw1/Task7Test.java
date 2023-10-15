@@ -7,16 +7,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Task7Test {
 
     @Test
-    @DisplayName("проверка rotateLeft")
+    @DisplayName("проверка rotateLeft1")
     void rotateLeftCheck() {
-        int[] n = {16, 17};
-        int[] shifts = {1, 2};
+        int n = 16;
+        int shift = 1;
 
-        int[] results = {1, 6};
+        int result = 1;
 
-        for (int i = 0; i < n.length; i++) {
-            assertEquals(results[i], Task7.rotateLeft(n[i], shifts[i]));
-        }
+        assertEquals(result, Task7.rotateLeft(n, shift));
+
+    }
+
+    @Test
+    @DisplayName("проверка rotateLeft2")
+    void rotateLeftCheck2() {
+        int n = 17;
+        int shift = 2;
+
+        int result = 6;
+
+        assertEquals(result, Task7.rotateLeft(n, shift));
+
     }
 
     @Test

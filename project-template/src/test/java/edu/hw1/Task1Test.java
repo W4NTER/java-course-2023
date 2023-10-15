@@ -11,20 +11,49 @@ class Task1Test {
 
     @Test
     @DisplayName("Время видео в секундах")
-    void videoLengthInSeconds(){
+    void videoLengthInSeconds() {
         //given
-        String[] videoLength = {"01:00", "13:56", "10:60"};
-        int[] results = {60, 836, -1};
+        String videoLength = "01:00";
 
         //when
-//        int lengthInSeconds = Task1.minutesToSeconds(videoLength);
+        int lengthInSeconds = Task1.minutesToSeconds(videoLength);
 
         //then
-        for (int i = 0; i < videoLength.length; i++) {
-            assertEquals(results[i], Task1.minutesToSeconds(videoLength[i]));
-        }
+        assertEquals(60, lengthInSeconds);
 
+    }
 
+    @Test
+    @DisplayName("Тест2")
+    void videoLengthInSeconds2() {
+
+        String videoLength = "13:56";
+
+        int lengthInSeconds = Task1.minutesToSeconds(videoLength);
+
+        assertEquals(836, lengthInSeconds);
+    }
+
+    @Test
+    @DisplayName("Тест3")
+    void videoLengthInSecondsWithFullSec() {
+
+        String videoLength = "1:60";
+
+        int lengthInSeconds = Task1.minutesToSeconds(videoLength);
+
+        assertEquals(-1, lengthInSeconds);
+    }
+
+    @Test
+    @DisplayName("Тест4")
+    void videoLengthInSecondsWithALotMin() {
+
+        String videoLength = "11212:10";
+
+        int lengthInSeconds = Task1.minutesToSeconds(videoLength);
+
+        assertEquals(672730, lengthInSeconds);
     }
 
 }

@@ -10,13 +10,47 @@ public class Task3Test {
     @DisplayName("Может ли массив вложиться в другой массив")
     void isThisArrFits() {
 
-        int[][] arrays1 = new int[][]{{1, 2, 3, 4}, {3, 1}, {9, 9, 8}, {1, 2, 3, 4}};
-        int[][] arrays2 = new int[][]{{0, 6}, {4, 0}, {8, 9}, {2, 3}};
+        int[]array1 = new int[] {1, 2, 3, 4};
+        int[] array2 = new int[] {2, 5};
 
-        boolean[] results = new boolean[] {true, true, false, false};
+        boolean isNestable = Task3.isNestable(array1, array2);
 
-        for (int i = 0; i < arrays2.length; i++) {
-            assertEquals(results[i], Task3.isNestable(arrays1[i], arrays2[i]));
-        }
+        assertEquals(false, isNestable);
+    }
+
+    @Test
+    @DisplayName("Test2")
+    void isThisArrFits1() {
+
+        int[]array1 = new int[] {1, 2, 3, 4};
+        int[] array2 = new int[] {0, 6};
+
+        boolean isNestable = Task3.isNestable(array1, array2);
+
+        assertEquals(true, isNestable);
+    }
+
+    @Test
+    @DisplayName("Test3")
+    void isThisArrFits2() {
+
+        int[]array1 = new int[] {3, 1};
+        int[] array2 = new int[] {4, 0};
+
+        boolean isNestable = Task3.isNestable(array1, array2);
+
+        assertEquals(true, isNestable);
+    }
+
+    @Test
+    @DisplayName("Test4")
+    void isThisArrFits3() {
+
+        int[]array1 = new int[] {9, 9, 8};
+        int[] array2 = new int[] {8, 9};
+
+        boolean isNestable = Task3.isNestable(array1, array2);
+
+        assertEquals(false, isNestable);
     }
 }

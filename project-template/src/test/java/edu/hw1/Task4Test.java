@@ -9,12 +9,43 @@ public class Task4Test {
     @Test
     @DisplayName("Изменение порядка символов")
     void fixedString() {
-        String[] arrStr = {"123456", "hTsii  s aimex dpus rtni.g", "badce", "оПомигети псаривьтс ртко!и"};
+        String input = "123456";
 
-        String[] result = {"214365", "This is a mixed up string.", "abcde", "Помогите исправить строки!"};
+        String result = "214365";
 
-        for (int i = 0; i < result.length; i++) {
-            assertEquals(result[i], Task4.fixString(arrStr[i]));
-        }
+
+        assertEquals(result, Task4.fixString(input));
+
+    }
+
+    @Test
+    @DisplayName("Test2")
+    void fixedString1() {
+        String input = "hTsii  s aimex dpus rtni.g";
+
+        String result = "This is a mixed up string.";
+
+        assertEquals(result, Task4.fixString(input));
+
+    }
+
+    @Test
+    @DisplayName("Test3")
+    void fixedString2() {
+        String input = "badce";
+
+        String result = "abcde";
+
+        assertEquals(result, Task4.fixString(input));
+    }
+
+    @Test
+    @DisplayName("Test4")
+    void fixedString13() {
+        String input = "оПомигети псаривьтс ртко!и";
+
+        String result = "Помогите исправить строки!";
+
+        assertEquals(result, Task4.fixString(input));
     }
 }
