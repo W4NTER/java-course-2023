@@ -27,7 +27,5 @@ public final class PopularCommandExecutor {
                 throw new RuntimeException(e);
             }
         }
-
     }
-
 }

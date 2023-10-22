@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class FaultyConnection implements Connection {
     private final static double LIMIT = 0.6;
-
     @Override
     public void execute(String command) {
         Random rand = new Random();
