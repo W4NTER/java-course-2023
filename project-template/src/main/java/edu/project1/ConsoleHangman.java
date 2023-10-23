@@ -1,29 +1,35 @@
 package edu.project1;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.Scanner;
-import edu.project1.GuessResult.*;
 
 
 public class ConsoleHangman {
+    private final static Logger LOGGER = LogManager.getLogger();
     private final static int MAX_ATTEMPTS = 5;
+    private final static int START_ATTEMPTS = 0;
+    private final static String ANSWER = new ChooseWord().randomWord();
+    private final static char[] START_USER_ANSWER = new char[ANSWER.length()];
+
     public void run() {
         Scanner command = new Scanner(System.in);
-        ChooseWord chooseWord = new ChooseWord();
-        String answer = chooseWord.randomWord();
-        var userAnswer = new char[answer.length()];
-        Arrays.fill(userAnswer, '*');
-        int attempts = 0;
-        Session session = new Session(answer, userAnswer, MAX_ATTEMPTS, attempts);
-        GuessResult guessResult = tryGuess(session, " ");
-        while (guessResult.attempt() != MAX_ATTEMPTS) {
-            System.out.println("Guess a letter:");
-            String guess = command.nextLine();
-            guessResult = tryGuess(session, guess);
-            session.setAttempts(guessResult.attempt());
+        Arrays.fill(START_USER_ANSWER, '*');
+        Session session = new Session(ANSWER, START_USER_ANSWER, MAX_ATTEMPTS, START_ATTEMPTS);
+        GuessResult guessResult;
+        try {
+            while (session.getAttempts() != -1) {
+                LOGGER.info("Guess a letter:");
+                String guess = command.nextLine();
+                guessResult = tryGuess(session, guess);
+                session.setAttempts(guessResult.attempt());
 
-            System.out.println(guessResult.message());
-            System.out.println("The word: " + String.valueOf(guessResult.state()));
+                LOGGER.info(guessResult.message());
+                LOGGER.info("The word: " + String.valueOf(guessResult.state()));
+            }
+        } catch (StringIndexOutOfBoundsException e) {
+            LOGGER.info("You entered an empty line");
         }
         command.close();
     }
@@ -37,6 +43,6 @@ public class ConsoleHangman {
     }
 
     private void printState(GuessResult guess) {
-        System.out.println(guess.message());
+        LOGGER.info(guess.message());
     }
 }

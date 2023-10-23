@@ -4,19 +4,22 @@ import org.jetbrains.annotations.NotNull;
 
 public interface GuessResult {
     char[] state();
+
     int attempt();
+
     int maxAttempts();
+
     @NotNull String message();
 
-    record Defeat(int maxAttempts) implements GuessResult {
+    record Defeat(char[] userAnswer) implements GuessResult {
         @Override
         public char[] state() {
-            return new char[0];
+            return userAnswer;
         }
 
         @Override
         public int attempt() {
-            return maxAttempts;
+            return -1;
         }
 
         @Override
@@ -29,7 +32,8 @@ public interface GuessResult {
             return "You lost!";
         }
     }
-    record Win(char[] userAnswer, int maxAttempts) implements GuessResult {
+
+    record Win(char[] userAnswer) implements GuessResult {
         @Override
         public char[] state() {
             return userAnswer;
@@ -37,7 +41,7 @@ public interface GuessResult {
 
         @Override
         public int attempt() {
-            return maxAttempts;
+            return -1;
         }
 
         @Override
@@ -50,6 +54,7 @@ public interface GuessResult {
             return "You won!";
         }
     }
+
     record SuccessfulGuess(int attempts, int maxAttempts, char[] userAnswer) implements GuessResult {
         @Override
         public char[] state() {
@@ -71,6 +76,7 @@ public interface GuessResult {
             return "Hit!";
         }
     }
+
     record FailedGuess(int attempts, int maxAttempts, char[] userAnswer) implements GuessResult {
         @Override
         public char[] state() {
