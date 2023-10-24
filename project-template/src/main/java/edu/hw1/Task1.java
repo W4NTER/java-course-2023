@@ -17,7 +17,5 @@ public final class Task1 {
             seconds = minutes * SECONDS_PER_MINUTE + seconds;
             return seconds;
         }
-
     }
-
 }

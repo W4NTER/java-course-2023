@@ -1,9 +1,7 @@
 package edu.hw1;
 
 public final class Task2 {
-
     private Task2() {
-
     }
 
     private static final int DEGREE = 10;

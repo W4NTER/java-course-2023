@@ -3,9 +3,7 @@ package edu.hw1;
 import java.util.Arrays;
 
 public final class Task6 {
-
     private Task6() {
-
     }
 
     private static final int FINAL_VALUE = 6174;

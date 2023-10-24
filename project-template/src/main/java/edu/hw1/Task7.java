@@ -1,9 +1,7 @@
 package edu.hw1;
 
 public final class Task7 {
-
     private Task7() {
-
     }
 
     public static int rotateRight(int n, int shift) {
@@ -21,5 +19,4 @@ public final class Task7 {
         int resultLength = rotateResult.length();
         return Integer.parseInt(rotateResult.substring(resultLength - length, resultLength), 2);
     }
-
 }

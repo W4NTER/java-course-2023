@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Logger;
 
 public final class Task0 {
     private Task0() {
-
     }
 
     private final static String TEXT = "Привет, мир!";
@@ -14,5 +13,4 @@ public final class Task0 {
     public static void loggerToConsole() {
         LOGGER.info(TEXT);
     }
-
 }

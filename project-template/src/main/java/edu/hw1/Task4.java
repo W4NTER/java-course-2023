@@ -1,10 +1,7 @@
 package edu.hw1;
 
 public final class Task4 {
-
-
     private Task4() {
-
     }
 
     public static String fixString(String input) {
